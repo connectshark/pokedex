@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --color-purple: 122 106 225;
+    --color-purple: 106 27 154;
     --color-primary: var(--color-purple);
   }
 }
