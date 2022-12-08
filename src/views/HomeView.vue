@@ -5,7 +5,7 @@
         v-model.lazy.number="pokemonId">
     </div>
 
-    <div>
+    <div v-if="(pokedex.pokemon.length > 0)">
       <figure>
         <img :key="targetPokemon.id" class="mx-auto w-36" :src="targetPokemon.image.hires" :alt="targetPokemon.name.chinese">
         <figure>{{ targetPokemon.name.chinese }}</figure>
