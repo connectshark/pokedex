@@ -8,3 +8,12 @@
     --color-primary: var(--color-purple);
   }
 }
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src:
+    url('https://cdn.jsdelivr.net/npm/mona-sans@1/Mona-Sans.woff2') format('woff2 supports variations'),
+    url('https://cdn.jsdelivr.net/npm/mona-sans@1/Mona-Sans.woff2') format('woff2-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+}

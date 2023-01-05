@@ -1,34 +1,35 @@
 import * as echarts from 'echarts'
-import { onBeforeUnmount, watchEffect } from 'vue'
+import { onBeforeUnmount, onMounted, watchEffect } from 'vue'
 
-const useChart = ({ data }) => {
+const useChart = ({ data, target }) => {
   let myChart = null
   const option = {
-    title: {
-      text: '種族值'
-    },
     radar: {
       axisName: {
-        formatter: '【{value}】',
+        formatter: '{value}',
+        fontFamily: `Mona-Sans, Noto Sans TC`,
         color: '#164e63'
       },
       indicator: [
-        { name: 'HP', max: 200 },
-        { name: 'Special Attack', max: 200 },
-        { name: 'Special Defense', max: 200 },
-        { name: 'Speed', max: 200 },
-        { name: 'Defense', max: 200 },
-        { name: 'Attack', max: 200 }
+        { name: '血量', max: 300, min: 0 },
+        { name: '特攻', max: 300, min: 0 },
+        { name: '特防', max: 300, min: 0 },
+        { name: '速度', max: 300, min: 0 },
+        { name: '防禦', max: 300, min: 0 },
+        { name: '攻擊', max: 300, min: 0 }
       ]
     },
     series: [{
       type: 'radar',
       label: {
-        show: true
+        show: true,
+        fontWeight: 'bolder',
+        fontSize: 16,
+        fontFamily: `Mona-Sans, Noto Sans TC`,
       },
       data: [
         {
-          value: [20, 4, 19, 28, 3, 1 ]
+          value: [1,1,1,1,1,1]
         }
       ],
       areaStyle: {
@@ -42,8 +43,8 @@ const useChart = ({ data }) => {
     myChart.resize()
   }
 
-  const createChart = (target) => {
-    myChart = echarts.init(target)
+  const createChart = () => {
+    myChart = echarts.init(target.value)
     myChart.setOption(option)
     watchEffect(() => {
       myChart.setOption({
@@ -59,6 +60,7 @@ const useChart = ({ data }) => {
 
   window.addEventListener('resize',resizeHandler)
 
+  onMounted(createChart)
   onBeforeUnmount(() => {
     window.removeEventListener('resize', resizeHandler)
     myChart.dispose()

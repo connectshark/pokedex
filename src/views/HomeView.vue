@@ -11,7 +11,8 @@
         <figure>{{ targetPokemon.name.chinese }}</figure>
       </figure>
     </div>
-    <div class=" h-60" ref="chartRef"></div>
+    <h2>種族值</h2>
+    <div class=" w-60 mx-auto h-60" ref="chartRef"></div>
     <datalist id="pokemonNumber">
       <option v-for="pokemon in pokedex.pokemon" :value="pokemon.id">
         {{ pokemon.name.chinese }}
@@ -45,13 +46,8 @@ const radarChartData = computed(() => {
 
 const chartRef = ref(null)
 
-const {
-  createChart
-} = useChart({
+useChart({
+  target: chartRef,
   data: radarChartData
-})
-
-onMounted(() => {
-  createChart(chartRef.value)
 })
 </script>

@@ -10,7 +10,7 @@ module.exports = {
         primary: 'rgb(var(--color-primary) / <alpha-value>)'
       },
       fontFamily: {
-        'noto': ['Poppins', 'Noto Sans TC', 'sans-serif']
+        'noto': ['Mona-Sans', 'Noto Sans TC', 'sans-serif']
       }
     }
   },
